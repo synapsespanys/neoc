@@ -21,6 +21,7 @@ smoother acceptance.
 
 ### Contributing code
 
+- Install the [prerequisites](INSTALL.md#prerequisites).
 - For the repository to your account.
 - Optionally create a __topical branch__, a branch whose name is succint but
   explains what you are doing.
