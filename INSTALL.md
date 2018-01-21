@@ -10,6 +10,10 @@
   - Xcode for macOS — https://developer.apple.com/xcode/
 - Doxygen (optional) — http://www.doxygen.org/
 
+### Installing the prerequisites on Ubuntu Linux
+
+`sudo apt-get install git cmake-gui build-essential doxygen graphviz`
+
 ## Build the neoc library
 
 - `cd build`
