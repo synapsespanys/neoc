@@ -1,6 +1,6 @@
 ### CMakeLists.txt -- for neoc
  #
- #      Copyright © 2018-NOW Srikanth Anantharam
+ #      Copyright © 2018-NOW Synapse Research Innovation
  #      Created 16-Jan-2018 by Srikanth Anantharam
  ##
 
