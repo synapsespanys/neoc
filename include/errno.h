@@ -26,17 +26,17 @@
 #pragma once
 
 #ifdef _WIN32
-  #define EDOM   33  /*!< represents domain error */
-  #define EILSEQ 42  /*!< represents encoding error */
-  #define ERANGE 34  /*!< represents overflow error */
+  #define EDOM   33  //!< represents domain error
+  #define EILSEQ 42  //!< represents encoding error
+  #define ERANGE 34  //!< represents overflow error
 #elif __linux__
-  #define EDOM   33  /*!< represents domain error */
-  #define EILSEQ 84  /*!< represents encoding error */
-  #define ERANGE 34  /*!< represents overflow error */
+  #define EDOM   33  //!< represents domain error
+  #define EILSEQ 84  //!< represents encoding error
+  #define ERANGE 34  //!< represents overflow error
 #elif __APPLE__
-  #define EDOM     /*!< represents domain error */
-  #define EILSEQ   /*!< represents encoding error */
-  #define ERANGE   /*!< represents overflow error */
+  #define EDOM     //!< represents domain error
+  #define EILSEQ   //!< represents encoding error
+  #define ERANGE   //!< represents overflow error
 #endif
 
 #if defined(__STDC_WANT_LIB_EXT1__) && (__STDC_WANT_LIB_EXT1__ == 1)
@@ -58,6 +58,6 @@
 #endif
 
 /**
- * \brief number of the last error
+ * \brief stores the number of the last error
  */
 #define errno (*_errno())

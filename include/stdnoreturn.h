@@ -27,5 +27,6 @@
 
 /*! 
  * Convenience macro for the `_Noreturn` function specifier, indicating that
- * the function shall not return to its caller. */
+ * the function shall not return to its caller.
+ */
 #define noreturn _Noreturn

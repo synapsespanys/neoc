@@ -25,7 +25,7 @@
 
 #pragma once
 
-#define bool _Bool  /*!< Convenience macro for the Boolean data type. */
-#define true 1  /*!< Boolean literal \c true. */
-#define false 0  /*!< Boolean literal \c false. */
-#define __bool_true_false_are_defined 1  /*!< Required by C11 standard. */
+#define bool _Bool  //!< Convenience macro for the Boolean data type.
+#define true 1  //!< Boolean literal \c true.
+#define false 0  //!< Boolean literal \c false.
+#define __bool_true_false_are_defined 1  //!< Required by C11 standard.

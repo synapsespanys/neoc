@@ -25,14 +25,14 @@
 
 #pragma once
 
-#define and &&  /*!< logical and */
-#define and_eq &=  /*!< bitwise and assignment */
-#define bitand &  /*!< bitwise and */
-#define bitor |  /*!< bitwise or */
-#define compl ~  /*!< bitwise complement */
-#define not !  /*!< logical not */
-#define not_eq !=  /*!< logical not equal to */
-#define or ||  /*!< logical or */
-#define or_eq |=  /*!< bitwise or assignment */
-#define xor ^  /*!< bitwise xor */
-#define xor_eq ^=  /*!< bitwise xor assignment */
+#define and    &&  //!< logical and
+#define and_eq &=  //!< bitwise and assignment
+#define bitand &   //!< bitwise and
+#define bitor  |   //!< bitwise or
+#define compl  ~   //!< bitwise complement
+#define not    !   //!< logical not
+#define not_eq !=  //!< logical not equal to
+#define or     ||  //!< logical or
+#define or_eq  |=  //!< bitwise or assignment
+#define xor    ^   //!< bitwise xor
+#define xor_eq ^=  //!< bitwise xor assignment
