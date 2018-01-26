@@ -42,9 +42,9 @@
  * text of the argument, the name of the source file, the source line number,
  * and the name of the enclosing function — the latter are respectively the
  * values of the preprocessing macros \c `__FILE__` and \c `__LINE__` and of the
- * identifier \c `__func__`) on the standard error stream in an implementation-
- * defined format. It then calls the \c abort function.
- */
+ * identifier \c `__func__`) on the standard error stream in an
+ * implementation-defined format. It then calls the \c abort function.
+ */ 
 #ifdef NDEBUG
   #define assert(ignore) ((void)0)
 #else
@@ -53,8 +53,8 @@
 #endif
 
 /**
- * \brief aborts the program if \p expression evaluates to \c false at compile-
- *        time.
+ * \brief aborts the program if \p expression evaluates to \c false at
+ *        compile-time.
  * \param[in] expression 
  * \param[in] message 
  */
