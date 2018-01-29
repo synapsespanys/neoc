@@ -1,0 +1,53 @@
+stages:
+  - test
+  - install
+  - deploy
+
+test:linux:
+  image: ubuntu:artful
+  stage: test
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake doxygen graphviz
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug
+    - cmake --build . --config Debug --target all
+    - cmake --build . --config Debug --target test
+
+install:linux:
+  image: ubuntu:artful
+  stage: install
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake doxygen graphviz
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    - cmake --build . --config Release --target all
+    - cmake --build . --config Release --target install
+    - cd ..
+    - mkdir linux
+    - cp -r install/share/doc/neoc/html/* linux
+  artifacts:
+    paths:
+    - linux
+  only:
+    - master
+
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp index.html .public
+    - mv .public public
+    - mv linux public/
+  dependencies:
+    - install:linux
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
