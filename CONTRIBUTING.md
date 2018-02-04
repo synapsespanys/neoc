@@ -26,7 +26,7 @@ smoother acceptance.
 - Optionally create a __topical branch__, a branch whose name is succint but
   explains what you are doing.
 - Make your changes, committing at logical breaks.
-- Make sure the [tests](INSTALL.md#test-the-neoc-library) pass.
+- Make sure the [tests](INSTALL.md#build-and-test-the-neoc-library) pass.
 - Push your work to your personal account.
 - Create a pull request.
 - Watch for comments or acceptance.
