@@ -23,9 +23,14 @@
  * \copyright Apache License
  */
 
-#ifdef __GNUC__
+#if defined(__GNUC__)
   // \cond
   extern void __assert(const char * msg, const char * file, int line);
+  // \endcond
+#elif defined(_MSC_VER)
+  // \cond
+  extern void _wassert(const char * _Message, const char * _File, \
+    unsigned _Line);
   // \endcond
 #endif
 
@@ -44,12 +49,17 @@
  * values of the preprocessing macros \c `__FILE__` and \c `__LINE__` and of the
  * identifier \c `__func__`) on the standard error stream in an
  * implementation-defined format. It then calls the \c abort function.
- */ 
+ */
 #ifdef NDEBUG
   #define assert(ignore) ((void)0)
 #else
-  #define assert(expression) \
-    (void)((expression) || (__assert(#expression, __FILE__, __LINE__), 0))
+  #ifdef _WIN32
+    #define assert(expression) (void)((!!(expression)) || \
+      (_wassert((#expression), (__FILE__), (unsigned)(__LINE__)), 0))
+  #elif __linux__
+    #define assert(expression) \
+      (void)((expression) || (__assert(#expression, __FILE__, __LINE__), 0))
+  #endif
 #endif
 
 /**

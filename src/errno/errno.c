@@ -24,7 +24,11 @@
 
 #include <errno.h>
 
-_Thread_local int __errno;
+#ifdef _WIN32
+  __declspec(thread) int __errno;
+#elif __linux__
+  _Thread_local int __errno;
+#endif
 
 int * _errno(void) {
   return &__errno;
