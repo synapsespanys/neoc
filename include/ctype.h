@@ -34,7 +34,7 @@
  * The \c isalnum function tests for any character for which \c isalpha or
  * \c isdigit is true.
  */
-int isalnum(int c);
+int isalnum(const int c);
 
 /** 
  * \brief tests for any alphabetic character.
@@ -48,7 +48,7 @@ int isalnum(int c);
  * or \c isspace is \c true. In the \c "C" locale, \c isalpha returns true only
  * for the characters for which \c isupper or \c islower is true.
  */
-int isalpha(int c);
+int isalpha(const int c);
 
 /**
  * \brief tests for any blank character.
@@ -63,7 +63,7 @@ int isalpha(int c);
  * horizontal tab (\c '\\t'). In the \c "C" locale, \c isblank returns \c true
  * only for the standard blank characters.
  */
-int isblank(int c);
+int isblank(const int c);
 
 /** 
  * \brief tests for any control character.
@@ -71,7 +71,7 @@ int isblank(int c);
  * \param[in] c a character.
  * \return \c true: if \p c is a control character, \c false: otherwise.
  */
-int iscntrl(int c);
+int iscntrl(const int c);
 
 /** 
  * \brief tests for any decimal-digit character.
@@ -79,7 +79,7 @@ int iscntrl(int c);
  * \param[in] c a character.
  * \return \c true: if \p c is a decimal-digit character, \c false: otherwise.
  */
-int isdigit(int c);
+int isdigit(const int c);
 
 /** 
  * \brief tests for any printing character except space (\c ' ').
@@ -88,7 +88,7 @@ int isdigit(int c);
  * \return \c true: if \p c is a printing character other than space, \c false:
  *         otherwise.
  */
-int isgraph(int c);
+int isgraph(const int c);
 
 /** 
  * \brief tests for any character that is a lowercase letter.
@@ -101,7 +101,7 @@ int isgraph(int c);
  * , \c isdigit, \c ispunct, or \c isspace is \c true. In the \c "C" locale,
  * \c islower returns \c true only for the lowercase letters.
  */
-int islower(int c);
+int islower(const int c);
 
 /** 
  * \brief tests for any printing character including space (\c ' ').
@@ -110,7 +110,7 @@ int islower(int c);
  * \return \c true: if \p c is a printing character including space, \c false:
  *         otherwise.
  */
-int isprint(int c);
+int isprint(const int c);
 
 /** 
  * \brief tests for any punctuation character.
@@ -124,7 +124,7 @@ int isprint(int c);
  * for every printing character for which neither \c isspace nor \c isalnum is
  * \c true.
  */
-int ispunct(int c);
+int ispunct(const int c);
 
 /**
  * \brief tests for any white-space character.
@@ -140,7 +140,7 @@ int ispunct(int c);
  * \c "C" locale, \c isspace returns \c true only for the standard white-space
  * characters.
  */
-int isspace(int c);
+int isspace(const int c);
 
 /**
  * \brief tests for any character that is an uppercase letter.
@@ -153,7 +153,7 @@ int isspace(int c);
  * , \c isdigit, \c ispunct, or \c isspace is \c true. In the \c "C" locale,
  * \c isupper returns \c true only for the uppercase letters.
  */
-int isupper(int c);
+int isupper(const int c);
 
 /**
  * \brief tests for any hexadecimal-digit character.
@@ -164,7 +164,7 @@ int isupper(int c);
  * 
  * 
  */
-int isxdigit(int c);
+int isxdigit(const int c);
 
 /**
  * \brief converts an uppercase letter to a corresponding lowercase letter.
@@ -174,7 +174,7 @@ int isxdigit(int c);
  *         true) and a corresponfing lowercase letter exists, otherwise the
  *         argument is returned unchanged.
  */
-int tolower(int c);
+int tolower(const int c);
 
 /**
  * \brief converts a lowercase letter to corresponding uppercase letter.
@@ -184,4 +184,4 @@ int tolower(int c);
  *         true) and a corresponfing uppercase letter exists, otherwise the
  *         argument is returned unchanged.
  */
-int toupper(int c);
+int toupper(const int c);
