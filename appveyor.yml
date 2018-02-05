@@ -1,0 +1,13 @@
+version: '{build}'
+image: Visual Studio 2017
+build_script:
+- cmd: >-
+    mkdir build
+
+    cd build
+
+    cmake ..
+
+    cmake --build . --config Debug --target ALL_BUILD
+test_script:
+- cmd: cmake --build . --config Debug --target RUN_TESTS
