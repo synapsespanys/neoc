@@ -23,7 +23,7 @@
  * \copyright Apache License
  */
 
-#if defined(__GNUC__)
+#if defined(__GNUC__) && defined(__linux__)
   // \cond
   extern void __assert(const char * msg, const char * file, int line);
   // \endcond
@@ -31,6 +31,11 @@
   // \cond
   extern void _wassert(const char * _Message, const char * _File, \
     unsigned _Line);
+  // \endcond
+#elif defined(__GNUC__) && defined(__APPLE__)
+  // \cond
+  extern void __assert_rtn(const char * func, const char * file, int line, \
+    const char * msg);
   // \endcond
 #endif
 
@@ -53,12 +58,15 @@
 #ifdef NDEBUG
   #define assert(ignore) ((void)0)
 #else
-  #ifdef _WIN32
+  #if defined(_WIN32)
     #define assert(expression) (void)((!!(expression)) || \
       (_wassert((#expression), (__FILE__), (unsigned)(__LINE__)), 0))
-  #elif __linux__
+  #elif defined(__linux__)
     #define assert(expression) \
       (void)((expression) || (__assert(#expression, __FILE__, __LINE__), 0))
+  #elif defined(__APPLE__)
+    #define assert(expression) (void)((expression) || \
+      (__assert_rtn(__func__, __FILE__, __LINE__, #expression), 0))
   #endif
 #endif
 

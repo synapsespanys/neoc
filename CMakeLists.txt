@@ -23,6 +23,8 @@ elseif(WIN32)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${NEOC_COMPILE_FLAGS}")
 elseif(APPLE)
   set(PLATFORM "__APPLE__")
+  set(NEOC_COMPILE_FLAGS "-nostdinc -Wall")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${NEOC_COMPILE_FLAGS}")
 endif()
 enable_testing()
 

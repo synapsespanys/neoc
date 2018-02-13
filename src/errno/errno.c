@@ -24,9 +24,9 @@
 
 #include <errno.h>
 
-#ifdef _WIN32
+#if defined( _WIN32)
   __declspec(thread) int __errno;
-#elif __linux__
+#elif defined(__linux__) || defined(__APPLE__)
   _Thread_local int __errno;
 #endif
 

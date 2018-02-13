@@ -1,0 +1,14 @@
+language: c
+
+os: osx
+
+osx_image: xcode9.2
+
+compiler: gcc
+
+script:
+  - mkdir build
+  - cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Debug
+  - cmake --build . --config Debug --target all
+  - cmake --build . --config Debug --target test
