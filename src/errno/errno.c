@@ -28,6 +28,8 @@
   __declspec(thread) int __errno;
 #elif defined(__linux__) || defined(__APPLE__)
   _Thread_local int __errno;
+#elif defined(__AVR)
+  int __errno;
 #endif
 
 int * _errno(void) {

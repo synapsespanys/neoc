@@ -37,6 +37,11 @@
   #define EDOM   33  //!< represents domain error
   #define EILSEQ 92  //!< represents encoding error
   #define ERANGE 34  //!< represents overflow error
+#elif __AVR
+  #define ENOERR ((int)(66072050 & 0xffff))
+  #define EDOM   33      //!< represents domain error
+  #define EILSEQ ENOERR  //!< represents encoding error
+  #define ERANGE 34      //!< represents overflow error
 #endif
 
 #if defined(__STDC_WANT_LIB_EXT1__) && (__STDC_WANT_LIB_EXT1__ == 1)
