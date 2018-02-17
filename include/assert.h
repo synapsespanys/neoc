@@ -22,7 +22,6 @@
  * \date 14-01-2018
  * \copyright Apache License
  */
-
 #if defined(__GNUC__) && defined(__linux__)
   // \cond
   extern void __assert(const char * msg, const char * file, int line);
@@ -36,6 +35,14 @@
   // \cond
   extern void __assert_rtn(const char * func, const char * file, int line, \
     const char * msg);
+  // \endcond
+#elif defined(__GNUC__) && defined(__AVR)
+  // \cond
+  extern void __assert(const char * __func, const char * __file, int __lineno, \
+    const char *__sexp);
+  #if !defined(__ASSERT_USE_STDERR)
+    extern _Noreturn void abort(void);
+  #endif
   // \endcond
 #endif
 
@@ -67,6 +74,13 @@
   #elif defined(__APPLE__)
     #define assert(expression) (void)((expression) || \
       (__assert_rtn(__func__, __FILE__, __LINE__, #expression), 0))
+  #elif defined(__AVR)
+    #if defined(__ASSERT_USE_STDERR)
+      #define assert(expression) ((expression) ? (void)0 : \
+        __assert(__func__, __FILE__, __LINE__, #expression))
+    #else
+      #define assert(expression) ((expression) ? (void)0 : abort())
+    #endif
   #endif
 #endif
 

@@ -8,13 +8,25 @@ test:linux:
   stage: test
   before_script:
     - apt-get update --yes
-    - apt-get install --yes cmake doxygen graphviz
+    - apt-get install --yes cmake
   script:
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=Debug
     - cmake --build . --config Debug --target all
     - cmake --build . --config Debug --target test
+
+test:avr:
+  image: ubuntu:artful
+  stage: test
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake gcc-avr avr-libc
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_TOOLCHAIN_FILE=../tools/toolchain-avr.cmake -DCMAKE_BUILD_TYPE=Debug
+    - cmake --build . --config Debug --target all
 
 install:linux:
   image: ubuntu:artful
@@ -37,6 +49,27 @@ install:linux:
   only:
     - master
 
+install:avr:
+  image: ubuntu:artful
+  stage: install
+  before_script:
+    - apt-get update --yes
+    - apt-get install --yes cmake gcc-avr avr-libc doxygen graphviz
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_TOOLCHAIN_FILE=../tools/toolchain-avr.cmake -DCMAKE_BUILD_TYPE=Release
+    - cmake --build . --config Release --target all
+    - cmake --build . --config Release --target install
+    - cd ..
+    - mkdir avr
+    - cp -r install/share/doc/neoc/html/* avr
+  artifacts:
+    paths:
+    - avr
+  only:
+    - master
+
 pages:
   stage: deploy
   script:
@@ -44,8 +77,10 @@ pages:
     - cp index.html .public
     - mv .public public
     - mv linux public/
+    - mv avr public/
   dependencies:
     - install:linux
+    - install:avr
   artifacts:
     paths:
       - public
